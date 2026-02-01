@@ -96,16 +96,23 @@
         }
 
         /* TITOLO */
+      
         h1.main-title {
-            font-family: 'Pacifico', cursive; 
-            font-size: 5.5rem; 
+            font-family: 'Sacramento', cursive; 
+            font-size: 7.5rem; /* Molto grande */
             color: var(--title-red);
             text-align: center;
             margin-bottom: 25px;
             margin-top: 15px;
-            font-weight: 400;
-            line-height: 1.2;
-            text-shadow: none; 
+            line-height: 1.1;
+            font-weight: normal;
+            
+            /* TRUCCO PER INGRASSARE IL FONT */
+            /* Aggiunge un bordo spesso dello stesso colore */
+            -webkit-text-stroke: 2.5px var(--title-red);
+            
+            /* Assicura che il testo resti leggibile */
+            paint-order: stroke fill;
         }
 
         /* TESTO SCRITTO A MANO */
