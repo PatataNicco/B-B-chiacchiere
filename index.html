@@ -188,27 +188,63 @@
             .email-link { font-size: 1.4rem; }
             .parallax-wrapper { background-attachment: scroll; height: 50vh; }
         }
+        
+        .mobile-menu {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: var(--nav-brown);
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            gap: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu a {
+            font-family: 'Caveat', cursive;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            padding: 5px 0;
+        }
+
+        .hidden-menu { display: none; }
+        .flex-menu { display: flex; }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR AGGIORNATA -->
     <nav class="navbar">
         <div class="container mx-auto flex justify-between items-center w-full max-w-6xl">
             <a href="index.html" class="navbar-brand hover:opacity-90 transition-opacity">B&B Chiacchiere</a>
             
+            <!-- Link Desktop -->
             <div class="nav-links hidden md:flex">
-                <a href="index.html" class="active">Home page</a>
-                <!-- Questo link funzionerà quando creerai il file galleria.html -->
+                <a href="index.html"class="active">Home page</a>
                 <a href="galleria.html">Galleria</a> 
                 <a href="prenota.html">Prenota</a>
                 <a href="raggiungerci.html">Raggiungerci</a>
                 <a href="contatti.html">Contatti</a>
                 <a href="#"><i class="fas fa-search"></i></a>
             </div>
-            <div class="md:hidden text-white text-xl cursor-pointer">
+
+            <!-- Tasto Hamburger Mobile -->
+            <div id="mobile-menu-btn" class="md:hidden text-white text-xl cursor-pointer p-2">
                 <i class="fas fa-bars"></i>
             </div>
+        </div>
+
+        <!-- LISTA LINK MOBILE (Nascosta) -->
+        <div id="mobile-menu" class="hidden-menu md:hidden mobile-menu">
+            <a href="index.html">Home page</a>
+            <a href="galleria.html">Galleria</a>
+            <a href="prenota.html">Prenota</a>
+            <a href="raggiungerci.html">Raggiungerci</a>
+            <a href="contatti.html">Contatti</a>
         </div>
     </nav>
 
@@ -265,6 +301,24 @@
     <div class="fixed bottom-3 left-3 text-gray-500 opacity-60 hover:opacity-100 cursor-pointer z-50 text-xl">
         <i class="fas fa-info-circle"></i>
     </div>
+
+    <!-- SCRIPT MENU MOBILE -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        if(btn && menu) {
+            btn.addEventListener('click', () => {
+                if (menu.classList.contains('hidden-menu')) {
+                    menu.classList.remove('hidden-menu');
+                    menu.classList.add('flex-menu');
+                } else {
+                    menu.classList.remove('flex-menu');
+                    menu.classList.add('hidden-menu');
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
