@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti - B&B Chiacchiere</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Sacramento&family=Comfortaa:wght@300;400;600&family=Caveat:wght@400;500&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --nav-brown: #4e362e;
+            --bg-pink: #f5e6e1;
+            --title-red: #a03c28;
+            --text-color: #2c2c2c;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comfortaa', sans-serif; 
+            background-color: var(--bg-pink);
+            padding-top: 80px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background-color: var(--nav-brown);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .navbar-brand {
+            font-family: 'Caveat', cursive;
+            color: white;
+            font-size: 1.6rem;
+            margin-right: auto;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-family: 'Caveat', cursive;
+            color: #f0f0f0;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* CONTENUTO */
+        .container-custom {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 60vh;
+        }
+
+        h1.page-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            color: var(--title-red);
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+
+        .intro-text {
+            font-family: 'Sacramento', cursive;
+            font-size: 2.2rem;
+            text-align: center;
+            color: #555;
+            margin-bottom: 50px;
+        }
+
+        /* LAYOUT GRIGLIA */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px; /* Aumentato spazio tra colonne */
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1.2fr 0.8fr; /* Form un po' più largo dell'immagine */
+            }
+        }
+
+        /* NUOVO STILE FORM */
+        .form-box {
+            background-color: white; /* Sfondo bianco pulito */
+            padding: 40px;
+            border-radius: 20px; /* Più arrotondato */
+            box-shadow: 0 10px 30px rgba(160, 60, 40, 0.1); /* Ombra rossiccia delicata */
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--title-red); /* Rosso invece di marrone */
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee; /* Bordo molto chiaro */
+            border-radius: 12px;
+            background-color: #fafafa;
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 1rem;
+            color: #555;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--title-red);
+            background-color: white;
+            box-shadow: 0 0 0 4px rgba(160, 60, 40, 0.05);
+        }
+
+        /* Pulsante Ridisegnato */
+        .btn-submit {
+            background-color: var(--title-red); /* Rosso caldo */
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(160, 60, 40, 0.3);
+        }
+
+        .btn-submit:hover {
+            background-color: #b94e3a; /* Un po' più chiaro al passaggio */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(160, 60, 40, 0.4);
+        }
+
+        /* IMMAGINE */
+        .img-container {
+            text-align: center;
+        }
+        
+        .illustration-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            /* mix-blend-mode: multiply; Se l'immagine ha sfondo bianco, questo aiuta a fonderla col rosa */
+        }
+
+        /* FOOTER */
+        .divider {
+            border: 0;
+            height: 1px;
+            background: #aaa;
+            margin: 60px auto;
+            max-width: 950px;
+            opacity: 0.4;
+        }
+
+        .contact-info {
+            text-align: center;
+            color: #555;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px; 
+            padding-bottom: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .font-numbers {
+            font-family: 'Sacramento', cursive;
+            font-size: 1.8rem; 
+            font-weight: 500;
+            letter-spacing: 0px;
+            color: #555;
+        }
+
+        .font-cursive-small {
+            font-family: 'Sacramento', cursive;
+            font-size: 1.8rem; 
+        }
+        
+        .contact-icon {
+            color: #d86db5;
+            font-size: 1.4rem; 
+        }
+        
+        .email-link {
+            color: #555;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-decoration-color: #888;
+            font-family: 'Sacramento', cursive;
+            font-size: 1.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            h1.page-title { font-size: 3rem; }
+            .grid-container { display: flex; flex-direction: column-reverse; gap: 30px;} 
+            .form-box { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container mx-auto flex justify-between items-center w-full max-w-6xl">
+            <a href="index.html" class="navbar-brand hover:opacity-90">B&B Chiacchiere</a>
+            
+            <div class="nav-links hidden md:flex">
+                <a href="index.html">Home page</a>
+                <a href="galleria.html">Galleria</a>
+                <a href="prenota.html">Prenota</a>
+                <a href="raggiungerci.html">Raggiungerci</a>
+                <a href="contatti.html" class="active">Contatti</a>
+                <a href="#"><i class="fas fa-search"></i></a>
+            </div>
+            <div class="md:hidden text-white text-xl cursor-pointer">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENUTO PRINCIPALE -->
+    <div class="container-custom">
+        
+        <h1 class="page-title">Contattaci</h1>
+        <p class="intro-text">Per informazioni, curiosità o un semplice saluto</p>
+
+        <div class="grid-container">
+            
+            <!-- COLONNA SINISTRA: FORM -->
+            <div class="form-box">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label class="form-label">Il tuo Nome</label>
+                        <input type="text" class="form-input" placeholder="Es. Mario Rossi">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">La tua Email</label>
+                        <input type="email" class="form-input" placeholder="esempio@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Messaggio</label>
+                        <textarea class="form-textarea" rows="4" placeholder="Scrivi qui la tua richiesta..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Invia Messaggio</button>
+                </form>
+            </div>
+
+            <!-- COLONNA DESTRA: IMMAGINE -->
+            <div class="img-container">
+                <img src="img/contatti/computer.png" alt="Scrivici una mail" class="illustration-img">
+                <div style="margin-top: 20px;">
+                    <p style="font-family: 'Sacramento'; font-size: 2rem; color: #a03c28; transform: rotate(-5deg);">Ti risponderemo presto!</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <hr class="divider">
+
+    <div class="contact-info">
+        <div class="contact-item font-numbers">
+            <i class="fas fa-phone-alt contact-icon transform rotate-90"></i>
+            <span>+39 347 265 2465</span>
+        </div>
+        
+        <div class="contact-item">
+            <i class="fas fa-at contact-icon"></i>
+            <a href="mailto:chiacchiere.bnb@gmail.com" class="email-link">chiacchiere.bnb@gmail.com</a>
+        </div>
+        
+        <div class="contact-item font-cursive-small">
+            <i class="fas fa-map-marker-alt contact-icon"></i>
+            <span>via Vittorio Gadolini, 20 - 29122 - Piacenza</span>
+        </div>
+    </div>
+
+</body>
+</html>
