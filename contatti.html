@@ -207,10 +207,19 @@
         }
 
         .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    display: flex;
+    align-items: flex-start; /* Allinea l'icona alla prima riga di testo */
+    justify-content: center;
+    margin-bottom: 20px;
+    text-align: left;        /* Mantiene il testo vicino all'icona */
+}
+
+.contact-item i {
+    color: #d670ad;
+    margin-right: 15px;
+    font-size: 1.5rem;
+    margin-top: 5px;         /* Regola l'altezza dell'icona per allinearla al testo corsivo */
+}
         
         .font-numbers {
             font-family: 'Sacramento', cursive;
@@ -231,13 +240,13 @@
         }
         
         .email-link {
-            color: #555;
-            text-decoration: underline;
-            text-decoration-style: dotted;
-            text-decoration-color: #888;
-            font-family: 'Sacramento', cursive;
-            font-size: 1.8rem;
-        }
+    color: #555;
+    text-decoration: none; /* Rimuove la sottolineatura standard */
+    border-bottom: none;    /* Rimuove l'eventuale bordo puntinato */
+    font-family: 'Sacramento', cursive;
+    font-size: 1.8rem;
+    display: inline-block;
+}
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -270,6 +279,12 @@
 
         .hidden-menu { display: none; }
         .flex-menu { display: flex; }
+
+        a {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
     </style>
 </head>
 <body>
