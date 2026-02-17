@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dintorni - B&B Chiacchiere</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Sacramento&family=Comfortaa:wght@300;400;600&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --nav-brown: #4e362e;
+            --bg-pink: #f5e6e1;
+            --title-red: #a03c28;
+            --text-color: #2c2c2c;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comfortaa', sans-serif; 
+            background-color: var(--bg-pink);
+            padding-top: 80px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background-color: var(--nav-brown);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .navbar-brand {
+            font-family: 'Caveat', cursive;
+            color: white;
+            font-size: 1.6rem;
+            margin-right: auto;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-family: 'Caveat', cursive;
+            color: #f0f0f0;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* CONTENUTO */
+        .container-custom {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 60vh;
+        }
+
+        h1.page-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            color: var(--title-red);
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+
+        .intro-text {
+            font-family: 'Sacramento', cursive;
+            font-size: 2.2rem;
+            text-align: center;
+            color: #555;
+            margin-bottom: 50px;
+        }
+
+        /* CARDS PER LE ATTRAZIONI */
+        .place-card {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        @media (min-width: 768px) {
+            .place-card {
+                flex-direction: row;
+                align-items: center;
+            }
+            .place-card:nth-child(even) {
+                flex-direction: row-reverse; /* Alterna immagine a dx e sx */
+            }
+        }
+
+        .place-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        @media (min-width: 768px) {
+            .place-img {
+                width: 50%;
+                height: 350px;
+            }
+        }
+
+        .place-content {
+            padding: 30px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .place-content {
+                width: 50%;
+            }
+        }
+
+        .place-title {
+            font-family: 'Sacramento', cursive;
+            font-size: 2.5rem;
+            color: var(--title-red);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .place-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* FOOTER */
+        .divider {
+            border: 0;
+            height: 1px;
+            background: #aaa;
+            margin: 60px auto;
+            max-width: 950px;
+            opacity: 0.4;
+        }
+
+        .contact-info {
+            text-align: center;
+            color: #555;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px; 
+            padding-bottom: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .font-numbers {
+            font-family: 'Sacramento', cursive;
+            font-size: 1.8rem; 
+            font-weight: 500;
+            letter-spacing: 0px;
+            color: #555;
+        }
+
+        .font-cursive-small {
+            font-family: 'Sacramento', cursive;
+            font-size: 1.8rem; 
+        }
+        
+        .contact-icon {
+            color: #d86db5;
+            font-size: 1.4rem; 
+        }
+        
+        .email-link {
+            color: #555;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-decoration-color: #888;
+            font-family: 'Sacramento', cursive;
+            font-size: 1.8rem;
+        }
+
+        /* MOBILE MENU */
+        .mobile-menu {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: var(--nav-brown);
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            gap: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu a {
+            font-family: 'Caveat', cursive;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            padding: 5px 0;
+        }
+
+        .hidden-menu { display: none; }
+        .flex-menu { display: flex; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container mx-auto flex justify-between items-center w-full max-w-6xl">
+            <a href="index.html" class="navbar-brand hover:opacity-90 transition-opacity">B&B Chiacchiere</a>
+            
+            <div class="nav-links hidden md:flex">
+                <a href="index.html">Home page</a>
+                <a href="galleria.html">Galleria</a> 
+                <a href="prenota.html">Prenota</a>
+                <a href="raggiungerci.html">Raggiungerci</a>
+                <a href="dintorni.html" class="active">Dintorni</a> <a href="contatti.html">Contatti</a>
+            </div>
+
+            <div id="mobile-menu-btn" class="md:hidden text-white text-xl cursor-pointer p-2">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden-menu md:hidden mobile-menu">
+            <a href="index.html">Home page</a>
+            <a href="galleria.html">Galleria</a>
+            <a href="prenota.html">Prenota</a>
+            <a href="raggiungerci.html">Raggiungerci</a>
+            <a href="dintorni.html">Dintorni</a>
+            <a href="contatti.html">Contatti</a>
+        </div>
+    </nav>
+
+    <div class="container-custom">
+        
+        <h1 class="page-title">Piacenza e Dintorni</h1>
+        <p class="intro-text">Arte, storia e natura a due passi da noi</p>
+
+        <div class="place-card">
+            <img src="https://via.placeholder.com/600x400?text=Piazza+Cavalli" alt="Piacenza Centro" class="place-img">
+            <div class="place-content">
+                <h3 class="place-title">Il Cuore di Piacenza</h3>
+                <p class="place-desc">
+                    Piacenza è una città tutta da scoprire. Passeggia per <strong>Piazza Cavalli</strong> ammirando i due monumenti equestri farnesiani, visita il magnifico <strong>Duomo</strong> e perditi tra le sale di <strong>Palazzo Farnese</strong>. Una città "di passo" che sa restare nel cuore.
+                </p>
+            </div>
+        </div>
+
+        <div class="place-card">
+            <img src="https://via.placeholder.com/600x400?text=Grazzano+Visconti" alt="Grazzano Visconti" class="place-img">
+            <div class="place-content">
+                <h3 class="place-title">Grazzano Visconti</h3>
+                <p class="place-desc">
+                    A pochi chilometri dalla città sorge questo incantevole <strong>borgo medievale</strong>. Un luogo dove il tempo sembra essersi fermato, perfetto per una gita romantica o per far sognare i più piccoli, tra botteghe artigiane e leggende di fantasmi.
+                </p>
+            </div>
+        </div>
+
+        <div class="place-card">
+            <img src="https://via.placeholder.com/600x400?text=Ponte+Gobbo" alt="Bobbio" class="place-img">
+            <div class="place-content">
+                <h3 class="place-title">Bobbio e la Val Trebbia</h3>
+                <p class="place-desc">
+                    Eletto "Borgo dei Borghi", Bobbio è la perla della Val Trebbia. Famoso per il suo iconico <strong>Ponte Gobbo</strong> (o Ponte del Diavolo) e per l'Abbazia di San Colombano. D'estate, il fiume Trebbia offre acque cristalline in cui rinfrescarsi.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="divider">
+
+    <div class="contact-info">
+        <div class="contact-item font-numbers">
+            <i class="fas fa-phone-alt contact-icon transform rotate-90"></i>
+            <span>+39 347 265 2465</span>
+        </div>
+        
+        <div class="contact-item">
+            <i class="fas fa-at contact-icon"></i>
+            <a href="mailto:chiacchiere.bnb@gmail.com" class="email-link">chiacchiere.bnb@gmail.com</a>
+        </div>
+        
+        <div class="contact-item font-cursive-small">
+            <i class="fas fa-map-marker-alt contact-icon"></i>
+            <span>via Vittorio Gadolini, 20 - 29122 - Piacenza</span>
+        </div>
+    </div>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        if(btn && menu) {
+            btn.addEventListener('click', () => {
+                if (menu.classList.contains('hidden-menu')) {
+                    menu.classList.remove('hidden-menu');
+                    menu.classList.add('flex-menu');
+                } else {
+                    menu.classList.remove('flex-menu');
+                    menu.classList.add('hidden-menu');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
