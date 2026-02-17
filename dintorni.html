@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatti - B&B Chiacchiere</title>
+    <title>Dintorni - B&B Chiacchiere</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Sacramento&family=Comfortaa:wght@300;400;600&family=Caveat:wght@400;500&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Sacramento&family=Comfortaa:wght@300;400;600&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <style>
@@ -95,95 +94,64 @@
             margin-bottom: 50px;
         }
 
-        /* LAYOUT GRIGLIA */
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 60px; /* Aumentato spazio tra colonne */
-            align-items: center;
+        /* CARDS PER LE ATTRAZIONI */
+        .place-card {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.6);
         }
 
         @media (min-width: 768px) {
-            .grid-container {
-                grid-template-columns: 1.2fr 0.8fr; /* Form un po' più largo dell'immagine */
+            .place-card {
+                flex-direction: row;
+                align-items: center;
+            }
+            .place-card:nth-child(even) {
+                flex-direction: row-reverse; /* Alterna immagine a dx e sx */
             }
         }
 
-        /* NUOVO STILE FORM */
-        .form-box {
-            background-color: white; /* Sfondo bianco pulito */
-            padding: 40px;
-            border-radius: 20px; /* Più arrotondato */
-            box-shadow: 0 10px 30px rgba(160, 60, 40, 0.1); /* Ombra rossiccia delicata */
-            border: 1px solid rgba(255, 255, 255, 0.8);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: var(--title-red); /* Rosso invece di marrone */
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-        }
-
-        .form-input, .form-textarea {
+        .place-img {
             width: 100%;
-            padding: 15px;
-            border: 2px solid #eee; /* Bordo molto chiaro */
-            border-radius: 12px;
-            background-color: #fafafa;
-            font-family: 'Comfortaa', sans-serif;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        @media (min-width: 768px) {
+            .place-img {
+                width: 50%;
+                height: 350px;
+            }
+        }
+
+        .place-content {
+            padding: 30px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .place-content {
+                width: 50%;
+            }
+        }
+
+        .place-title {
+            font-family: 'Sacramento', cursive;
+            font-size: 2.5rem;
+            color: var(--title-red);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .place-desc {
             font-size: 1rem;
+            line-height: 1.6;
             color: #555;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        .form-input:focus, .form-textarea:focus {
-            border-color: var(--title-red);
-            background-color: white;
-            box-shadow: 0 0 0 4px rgba(160, 60, 40, 0.05);
-        }
-
-        /* Pulsante Ridisegnato */
-        .btn-submit {
-            background-color: var(--title-red); /* Rosso caldo */
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-family: 'Comfortaa', sans-serif;
-            font-weight: bold;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 100%;
-            margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(160, 60, 40, 0.3);
-        }
-
-        .btn-submit:hover {
-            background-color: #b94e3a; /* Un po' più chiaro al passaggio */
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(160, 60, 40, 0.4);
-        }
-
-        /* IMMAGINE */
-        .img-container {
-            text-align: center;
-        }
-        
-        .illustration-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 20px;
-            /* mix-blend-mode: multiply; Se l'immagine ha sfondo bianco, questo aiuta a fonderla col rosa */
         }
 
         /* FOOTER */
@@ -239,13 +207,7 @@
             font-size: 1.8rem;
         }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            h1.page-title { font-size: 3rem; }
-            .grid-container { display: flex; flex-direction: column-reverse; gap: 30px;} 
-            .form-box { padding: 25px; }
-        }
-
+        /* MOBILE MENU */
         .mobile-menu {
             position: absolute;
             top: 60px;
@@ -274,28 +236,24 @@
 </head>
 <body>
 
-    <!-- NAVBAR AGGIORNATA -->
     <nav class="navbar">
         <div class="container mx-auto flex justify-between items-center w-full max-w-6xl">
             <a href="index.html" class="navbar-brand hover:opacity-90 transition-opacity">B&B Chiacchiere</a>
             
-            <!-- Link Desktop -->
             <div class="nav-links hidden md:flex">
                 <a href="index.html">Home page</a>
                 <a href="galleria.html">Galleria</a> 
                 <a href="prenota.html">Prenota</a>
                 <a href="raggiungerci.html">Raggiungerci</a>
-                <a href="dintorni.html">Dintorni</a>
-                <a href="contatti.html"class="active">Contatti</a>
+                <a href="dintorni.html" class="active">Dintorni</a> 
+                <a href="contatti.html">Contatti</a>
             </div>
 
-            <!-- Tasto Hamburger Mobile -->
             <div id="mobile-menu-btn" class="md:hidden text-white text-xl cursor-pointer p-2">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
 
-        <!-- LISTA LINK MOBILE (Nascosta) -->
         <div id="mobile-menu" class="hidden-menu md:hidden mobile-menu">
             <a href="index.html">Home page</a>
             <a href="galleria.html">Galleria</a>
@@ -306,49 +264,43 @@
         </div>
     </nav>
 
-    <!-- CONTENUTO PRINCIPALE -->
     <div class="container-custom">
         
-        <h1 class="page-title">Contattaci</h1>
-        <p class="intro-text">Per informazioni, curiosità o un semplice saluto</p>
+        <h1 class="page-title">Piacenza e Dintorni</h1>
+        <p class="intro-text">Arte, storia e natura a due passi da noi</p>
 
-        <div class="grid-container">
-            
-            <!-- COLONNA SINISTRA: FORM -->
-            <div class="form-box">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <label class="form-label">Il tuo Nome</label>
-                        <input type="text" class="form-input" placeholder="Es. Mario Rossi">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">La tua Email</label>
-                        <input type="email" class="form-input" placeholder="esempio@email.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Messaggio</label>
-                        <textarea class="form-textarea" rows="4" placeholder="Scrivi qui la tua richiesta..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Invia Messaggio</button>
-                </form>
+        <div class="place-card">
+            <img src="img/dintorni/piacenza.jpg" alt="Piacenza Centro" class="place-img">
+            <div class="place-content">
+                <h3 class="place-title">Il Cuore di Piacenza</h3>
+                <p class="place-desc">
+                    Piacenza è una città tutta da scoprire. Passeggia per <strong>Piazza Cavalli</strong> ammirando i due monumenti equestri farnesiani, visita il magnifico <strong>Duomo</strong> e perditi tra le sale di <strong>Palazzo Farnese</strong>. Una città "di passo" che sa restare nel cuore.
+                </p>
             </div>
+        </div>
 
-            <!-- COLONNA DESTRA: IMMAGINE -->
-            <div class="img-container">
-                <img src="img/contatti/computer.png" alt="Scrivici una mail" class="illustration-img">
-                <div style="margin-top: 20px;">
-                    <p style="font-family: 'Sacramento'; font-size: 2rem; color: #a03c28; transform: rotate(-5deg);">Ti risponderemo presto!</p>
-                </div>
+        <div class="place-card">
+            <img src="img/dintorni/grazzano.jpg" alt="Grazzano Visconti" class="place-img">
+            <div class="place-content">
+                <h3 class="place-title">Grazzano Visconti</h3>
+                <p class="place-desc">
+                    A pochi chilometri dalla città sorge questo incantevole <strong>borgo medievale</strong>. Un luogo dove il tempo sembra essersi fermato, perfetto per una gita romantica o per far sognare i più piccoli, tra botteghe artigiane e leggende di fantasmi.
+                </p>
             </div>
+        </div>
 
+        <div class="place-card">
+            <img src="img/dintorni/bobbio.png" alt="Bobbio" class="place-img">
+            <div class="place-content">
+                <h3 class="place-title">Bobbio e la Val Trebbia</h3>
+                <p class="place-desc">
+                    Eletto "Borgo dei Borghi", Bobbio è la perla della Val Trebbia. Famoso per il suo iconico <strong>Ponte Gobbo</strong> (o Ponte del Diavolo) e per l'Abbazia di San Colombano. D'estate, il fiume Trebbia offre acque cristalline in cui rinfrescarsi.
+                </p>
+            </div>
         </div>
 
     </div>
 
-    <!-- FOOTER -->
     <hr class="divider">
 
     <div class="contact-info">
@@ -368,7 +320,6 @@
         </div>
     </div>
 
-    <!-- SCRIPT MENU MOBILE -->
     <script>
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
