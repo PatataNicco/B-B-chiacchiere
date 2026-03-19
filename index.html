@@ -150,49 +150,58 @@
             padding-bottom: 40px;
         }
 
+       /* --- STILI CONTATTI --- */
         .contact-item {
-    display: flex;
-    align-items: flex-start; /* Allinea l'icona alla prima riga di testo */
-    justify-content: center;
-    margin-bottom: 20px;
-    text-align: left;        /* Mantiene il testo vicino all'icona */
-}
+            display: flex;
+            align-items: flex-start; /* Tiene fissa l'icona alla prima riga */
+            justify-content: center;
+            margin-bottom: 20px;
+        }
 
-.contact-item i {
-    color: #d670ad;
-    margin-right: 15px;
-    font-size: 1.5rem;
-    margin-top: 5px;         /* Regola l'altezza dell'icona per allinearla al testo corsivo */
-}
-        
+        .contact-item span, .contact-item a {
+            text-align: center; /* Quando il testo va a capo, si centra su se stesso */
+            display: inline-block;
+        }
+
+        .contact-item i {
+            color: #d670ad;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            margin-top: 5px; /* Mantiene allineato il simbolino */
+        }
+
+        /* --- STILI FONT --- */
         .font-numbers {
             font-family: 'Sacramento', cursive;
-            font-size: 1.8rem; /* Ingrandito per essere leggibile come nella foto */
+            font-size: 1.8rem; 
             font-weight: 500;
-            letter-spacing: 0px;
             color: #555;
+            letter-spacing: 0px;
         }
 
         .font-cursive-small {
             font-family: 'Sacramento', cursive;
             font-size: 1.8rem; 
         }
-        
-        .contact-icon {
-            color: #d86db5;
-            font-size: 1.2rem; 
-        }
-        
-        .email-link {
-    color: #555;
-    text-decoration: none; /* Rimuove la sottolineatura standard */
-    border-bottom: none;    /* Rimuove l'eventuale bordo puntinato */
-    font-family: 'Sacramento', cursive;
-    font-size: 1.8rem;
-    display: inline-block;
-}
 
-        /* PER MOBILE */
+        .email-link {
+            font-family: 'Sacramento', cursive;
+            font-size: 1.8rem;
+        }
+
+        /* --- FIX GLOBALE RIMOZIONE SOTTOLINEATURE (Anche su Safari/iPhone) --- */
+        a, 
+        a[x-apple-data-detectors], 
+        .contact-item span, 
+        .contact-item a {
+            text-decoration: none !important;
+            border: none !important;
+            border-bottom: none !important;
+            box-shadow: none !important;
+            color: inherit !important; /* Forza il mantenimento del colore grigio, evitando il blu di default di iOS */
+        }
+
+        /* --- STILI PER MOBILE (SPECIFICI DELLA HOMEPAGE) --- */
         @media (max-width: 768px) {
             .navbar-brand { font-size: 1.4rem; }
             .nav-links { display: none; }
@@ -203,7 +212,8 @@
             .email-link { font-size: 1.4rem; }
             .parallax-wrapper { background-attachment: scroll; height: 50vh; }
         }
-        
+
+        /* --- STILI MENU MOBILE --- */
         .mobile-menu {
             position: absolute;
             top: 60px;
@@ -220,20 +230,13 @@
 
         .mobile-menu a {
             font-family: 'Caveat', cursive;
-            color: white;
+            color: white !important; /* Garantisce il bianco nel menu */
             font-size: 1.5rem;
-            text-decoration: none;
             padding: 5px 0;
         }
 
         .hidden-menu { display: none; }
         .flex-menu { display: flex; }
-
-        a {
-    text-decoration: none !important;
-    border-bottom: none !important;
-    box-shadow: none !important;
-}
     </style>
 </head>
 <body>
