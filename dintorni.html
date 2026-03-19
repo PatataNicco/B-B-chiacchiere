@@ -175,10 +175,19 @@
         }
 
         .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    display: flex;
+    align-items: flex-start; /* Allinea l'icona alla prima riga di testo */
+    justify-content: center;
+    margin-bottom: 20px;
+    text-align: left;        /* Mantiene il testo vicino all'icona */
+}
+
+.contact-item i {
+    color: #d670ad;
+    margin-right: 15px;
+    font-size: 1.5rem;
+    margin-top: 5px;         /* Regola l'altezza dell'icona per allinearla al testo corsivo */
+}
         
         .font-numbers {
             font-family: 'Sacramento', cursive;
@@ -232,6 +241,12 @@
 
         .hidden-menu { display: none; }
         .flex-menu { display: flex; }
+
+        a {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
     </style>
 </head>
 <body>
